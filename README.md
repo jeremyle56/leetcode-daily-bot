@@ -7,6 +7,10 @@ Discord bot to ping users daily to do the LeetCode Daily Problem. Originally bui
 
 You add invite bot to your server with [this link](https://discord.com/oauth2/authorize?client_id=1238418095597551646).
 
+<p align="center">
+  <img src="./assets/example.png" />
+</p>
+
 ## Setup Instructions
 **Requirements:**
 - Node/NVM
