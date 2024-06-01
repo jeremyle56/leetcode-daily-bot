@@ -1,11 +1,10 @@
 export interface DailyProblemData {
-    activeDailyCodingChallengeQuestion: {
-        link: string;
-        question: {
-            questionId: string;
-            title: string;
-            difficulty: string;
-        }
-    }
+  activeDailyCodingChallengeQuestion: {
+    link: string;
+    question: {
+      questionFrontendId: string;
+      title: string;
+      difficulty: string;
+    };
+  };
 }
-
