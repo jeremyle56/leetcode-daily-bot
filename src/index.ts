@@ -7,10 +7,10 @@ const client = new Client({
 });
 
 // On startup, send the daily problem to the channel
-client.on('ready', (c) => {
+client.on('ready', async (c) => {
   console.log(`${c.user.username} is online.`);
 
-  client.guilds.cache.forEach(async (g) => {
+  const sendMessages = client.guilds.cache.map(async (g) => {
     // Find if the ping role exists
     const role = g.roles.cache.find((r) => r.name == 'LeetCode Daily');
     if (!role) {
@@ -45,6 +45,10 @@ client.on('ready', (c) => {
       thread.send(`<@&${role?.id}>`);
     }
   });
+
+  // Early shutdown after message and thread are sent.
+  await Promise.all(sendMessages);
+  client.destroy();
 });
 
 client.login(process.env.TOKEN);
