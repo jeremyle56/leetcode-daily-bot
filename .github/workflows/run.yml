@@ -1,7 +1,7 @@
 on:
   schedule:
-    # Run at 10:00 am AEST = 12:00 am UTC
-    - cron: "0 0 * * *"
+    # Run at 9:50 am AEST = 11:50 pm UTC
+    - cron: '50 23 * * *'
 jobs:
   run-bot:
     runs-on: ubuntu-latest
@@ -14,13 +14,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-        
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 8
           run_install: false
-      
+
       - name: Get pnpm store directory
         shell: bash
         run: |
@@ -44,4 +44,3 @@ jobs:
         run: |
           pnpm run build
           timeout 10s pnpm run start || true
-
