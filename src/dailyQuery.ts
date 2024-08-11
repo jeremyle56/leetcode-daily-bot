@@ -1,12 +1,12 @@
 import { DailyProblemData } from './types';
 
-// GraphQL query to fetch the daily problem from leetcode API
+// GraphQL query to fetch the daily problem from Leetcode's API
 const QUERY = `#graphql
   query getDailyProblem {
     activeDailyCodingChallengeQuestion {
       link
       question {
-        questionId
+        questionFrontendId
         title
         difficulty
       }
@@ -22,21 +22,21 @@ const QUERY = `#graphql
 const formatDailyProblem = (data: DailyProblemData) => {
   const { activeDailyCodingChallengeQuestion } = data;
   let { link, question } = activeDailyCodingChallengeQuestion;
-  const { questionId, title, difficulty } = question;
+  const { questionFrontendId, title, difficulty } = question;
 
   // Construct the link to the problem
   link = 'https://leetcode.com' + link;
 
-  return { link, questionId, title, difficulty };
-}
+  return { link, questionFrontendId, title, difficulty };
+};
 
 /**
- * Fetch the daily problem from leetcode API
+ * Fetch the daily problem from leetcode's API
  * @returns The daily problem data
  */
 const fetchDailyProblem = async () => {
   try {
-    // Fetch the daily problem from leetcode API
+    // Fetch the daily problem from LeetCode's API
     const response = await fetch('https://leetcode.com/graphql', {
       method: 'POST',
       headers: {
@@ -56,6 +56,6 @@ const fetchDailyProblem = async () => {
     console.error('Error: ', err);
     return err;
   }
-}
+};
 
 export default fetchDailyProblem;
