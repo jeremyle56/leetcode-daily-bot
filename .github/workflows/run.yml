@@ -1,7 +1,7 @@
 on:
   schedule:
-    # Run at 9:59 am AEST = 11:59 pm UTC
-    - cron: '59 23 * * *'
+    # Run at 9:58 am AEST = 11:58 pm UTC
+    - cron: '58 23 * * *'
 jobs:
   run-bot:
     runs-on: ubuntu-latest
